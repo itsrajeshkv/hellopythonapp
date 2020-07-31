@@ -1,7 +1,7 @@
 node {
   stage('build & deploy') {
     openshiftBuild bldCfg: 'hellopythonapp',
-      namespace: 'development',
+      namespace: 'devlopment',
       showBuildLogs: 'true'
     openshiftVerifyDeployment depCfg: 'hellopythonapp',
       namespace: 'development'
@@ -12,7 +12,7 @@ node {
   }
   stage('deploy to test') {
     openshiftTag srcStream: 'hellopythonapp',
-      namespace: 'development',
+      namespace: 'devlopment',
       srcTag: 'latest',
       destinationNamespace: 'testing',
       destStream: 'hellopythonapp',
@@ -26,7 +26,7 @@ node {
   }
   stage('deploy to production') {
     openshiftTag srcStream: 'hellopythonapp',
-      namespace: 'development',
+      namespace: 'devlopment',
       srcTag: 'latest',
       destinationNamespace: 'production',
       destStream: 'hellopythonapp',
